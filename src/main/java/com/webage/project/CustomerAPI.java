@@ -24,12 +24,12 @@ public class CustomerAPI{
 		
 	}
 	
-	@GetMapping("/")
+	@GetMapping("api")
 	public String greeting(){
 		return "Welcome to my page!";
 	}
 	
-	@GetMapping("/customers")
+	@GetMapping("api/customers")
 	public String getAll(){
 		String result = "";
 		for(int i = 0; i < customerList.size(); i++) {
@@ -38,15 +38,16 @@ public class CustomerAPI{
 		return result;
 	}
 
-	@GetMapping("/customers/{id}")
+	@GetMapping("api/customers/{id}")
 	public String getCustomerByID(@PathVariable("id") long id) {
 		String result = "";
 		for(int i = 0; i < customerList.size(); i++) {
 			if(customerList.get(i).getId() == id) {
 				result += customerList.get(i).toString();
+				return result;
 			}
 		}
-		return result;
+		return "No such customer";
 	}
 	
 }
