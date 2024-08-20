@@ -13,9 +13,9 @@ public class CustomerAPI{
 	ArrayList<Customer> customerList;
 	
 	public CustomerAPI() {
-		Customer customer1 = new Customer(1, "Elbie", "elbie.li@adp.com");
-		Customer customer2 = new Customer(2, "Mochi", "mochi@adp.com");
-		Customer customer3 = new Customer(3, "Life", "life@adp.com");
+		Customer customer1 = new Customer(1, "Elbie", "elbie.li@adp.com", "12345");
+		Customer customer2 = new Customer(2, "Mochi", "mochi@adp.com", "12345");
+		Customer customer3 = new Customer(3, "Life", "life@adp.com", "12345");
 		
 		customerList = new ArrayList<Customer>();
 		customerList.add(customer1);
