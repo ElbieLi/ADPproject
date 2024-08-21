@@ -1,4 +1,3 @@
-INSERT INTO CUSTOMER (CUSTOMER_NAME, EMAIL, PASSWORD) VALUES
-('Elbie', 'elbie.li@adp.com', '12345'),
-('Mochi', 'mochi@adp.com', '12345'),
-('Life', 'life@adp.com', '12345');
+insert into CUSTOMERS (CUSTOMER_NAME, PASSWORD, EMAIL) VALUES ('Elbie', '12345', 'elbie.li@adp.com');
+insert into CUSTOMERS (CUSTOMER_NAME, PASSWORD, EMAIL) VALUES ('Mochi', '12345', 'mochi@adp.com');
+insert into CUSTOMERS (CUSTOMER_NAME, PASSWORD, EMAIL) VALUES ('Life', '12345', 'life@adp.com');
