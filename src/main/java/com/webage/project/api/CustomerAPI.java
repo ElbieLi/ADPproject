@@ -1,10 +1,12 @@
-package com.webage.project;
+package com.webage.project.api;
 
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.webage.project.domain.Customer;
 
 @RestController
 //@RequestMapping("/customers")
