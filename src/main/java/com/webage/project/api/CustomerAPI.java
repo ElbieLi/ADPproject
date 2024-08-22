@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,7 @@ public class CustomerAPI{
 		return repo.findById(id);
 	}
 	
+	//Implement a POST method that create a new customer
 	@PostMapping
 	public ResponseEntity<?> addNewCustomer(@RequestBody Customer customer, UriComponentsBuilder uri){
 		if (customer.getId() != 0 || customer.getName() == null || customer.getEmail() == null || customer.getPassword() == null) {
@@ -51,4 +53,18 @@ public class CustomerAPI{
 		ResponseEntity<?> response = ResponseEntity.created(location).build();
 		return response;
 	}
+
+	//Implement a PUT method that update the customer by customer id
+	@PutMapping("/{customerId}")
+	public ResponseEntity<?> updateCustomer(
+			@RequestBody Customer customer,
+			@PathVariable("customerId") long customerId) 
+	{
+		if (customer.getId() != customerId || customer.getName() == null || customer.getEmail() == null || customer.getPassword() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		customer = repo.save(customer);
+		return ResponseEntity.ok().build();
+	}
+
 }
