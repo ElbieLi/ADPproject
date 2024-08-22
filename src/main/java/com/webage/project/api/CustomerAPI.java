@@ -1,7 +1,11 @@
 package com.webage.project.api;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +27,12 @@ public class CustomerAPI{
 	@GetMapping
 	public Iterable<Customer> getAll(){
 		return repo.findAll();
+	}
+	
+	//Implement a GET method that returns a customer by id
+	@GetMapping("/{customerId}")
+	public Optional<Customer> getCustomerById(@PathVariable("customerId") long id){
+		return repo.findById(id);
 	}
 	
 	
