@@ -74,5 +74,5 @@ public class CustomerAPI{
 	public ResponseEntity<?> deleteCustomerById(@PathVariable("customerId") long id) {
 		repo.deleteById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-	}	
+	}
 }
