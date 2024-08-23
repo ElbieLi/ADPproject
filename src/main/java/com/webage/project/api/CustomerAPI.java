@@ -3,6 +3,7 @@ package com.webage.project.api;
 import java.net.URI;
 import java.util.Optional;
 
+import org.hsqldb.lib.Iterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,21 @@ public class CustomerAPI{
 		}
 		customer = repo.save(customer);
 		return ResponseEntity.ok().build();
+	}
+
+	@GetMapping("/byname/{username}")
+	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
+			UriComponentsBuilder uri) {
+		
+		java.util.Iterator<Customer> customers = repo.findAll().iterator();
+		while(customers.hasNext()) {
+			Customer cust = customers.next();
+			if(cust.getName().equalsIgnoreCase(username)) {
+				ResponseEntity<?> response = ResponseEntity.ok(cust);
+				return response;				
+			}			
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 
 	//Implement a DELETE method that delete a customer by customer id
