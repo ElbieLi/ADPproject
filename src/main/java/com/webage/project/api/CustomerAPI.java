@@ -3,7 +3,6 @@ package com.webage.project.api;
 import java.net.URI;
 import java.util.Optional;
 
-import org.hsqldb.lib.Iterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,6 +69,7 @@ public class CustomerAPI{
 		return ResponseEntity.ok().build();
 	}
 
+	//Implement a GET method that returns a customer by username
 	@GetMapping("/byname/{username}")
 	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
 			UriComponentsBuilder uri) {

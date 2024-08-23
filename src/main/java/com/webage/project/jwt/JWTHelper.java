@@ -12,15 +12,13 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JWTHelper {
-	/*
-	 * https://github.com/auth0/java-jwt
-	 */
+	
 	public static String createToken(String scopes) {
 		
 		try {
 		    Algorithm algorithm = Algorithm.HMAC256("secret");
-		    long fiveHoursInMillis = 1000 * 60 * 60 * 5;
-		    Date expireDate = new Date(System.currentTimeMillis() + fiveHoursInMillis);
+		    long tenHoursInMillis = 1000 * 60 * 60 * 10;
+		    Date expireDate = new Date(System.currentTimeMillis() + tenHoursInMillis);
 		    String token = JWT.create()
 		    	.withSubject("apiuser")
 		        .withIssuer("me@me.com")
