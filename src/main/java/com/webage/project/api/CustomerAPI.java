@@ -42,6 +42,23 @@ public class CustomerAPI{
 	public Optional<Customer> getCustomerById(@PathVariable("customerId") long id){
 		return repo.findById(id);
 	}
+
+	//Implement a GET method that returns a customer by username
+	@GetMapping("/byname/{username}")
+	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
+			UriComponentsBuilder uri) {
+		
+		java.util.Iterator<Customer> customers = repo.findAll().iterator();
+		while(customers.hasNext()) {
+			Customer cust = customers.next();
+			if(cust.getName().equalsIgnoreCase(username)) {
+				ResponseEntity<?> response = ResponseEntity.ok(cust);
+				return response;				
+			}			
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	}
+
 	
 	//Implement a POST method that create a new customer
 	@PostMapping
@@ -67,22 +84,6 @@ public class CustomerAPI{
 		}
 		customer = repo.save(customer);
 		return ResponseEntity.ok().build();
-	}
-
-	//Implement a GET method that returns a customer by username
-	@GetMapping("/byname/{username}")
-	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
-			UriComponentsBuilder uri) {
-		
-		java.util.Iterator<Customer> customers = repo.findAll().iterator();
-		while(customers.hasNext()) {
-			Customer cust = customers.next();
-			if(cust.getName().equalsIgnoreCase(username)) {
-				ResponseEntity<?> response = ResponseEntity.ok(cust);
-				return response;				
-			}			
-		}
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 
 	//Implement a DELETE method that delete a customer by customer id
