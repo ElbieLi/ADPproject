@@ -38,9 +38,7 @@ public class AuthFilter implements Filter{
 		}
 		
 		//the following cases will not has authentication check
-		if(   !uri.startsWith("/api/events") 
-	       && !uri.startsWith("/api/registrations")
-	       && !uri.equals("/api/customers")
+		if(   !uri.equals("/customers")
 	       ) {
 			chain.doFilter(request, response);
 			return;			
