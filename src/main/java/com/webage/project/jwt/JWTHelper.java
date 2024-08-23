@@ -51,7 +51,7 @@ public class JWTHelper {
 		    Algorithm algorithm = Algorithm.HMAC256("secret");
 		    JWTVerifier verifier = JWT.require(algorithm)
 		        .withIssuer("me@me.com")
-		        .build(); //Reusable verifier instance
+		        .build();
 		    DecodedJWT jwt = verifier.verify(token);
 		    return jwt.getClaims();
 		} catch (JWTVerificationException exception){
@@ -64,7 +64,7 @@ public class JWTHelper {
 		    Algorithm algorithm = Algorithm.HMAC256("secret");
 		    JWTVerifier verifier = JWT.require(algorithm)
 		        .withIssuer("me@me.com")
-		        .build(); //Reusable verifier instance
+		        .build();
 		    DecodedJWT jwt = verifier.verify(token);
 		    return jwt.getClaim("scopes").asString();
 		} catch (JWTVerificationException exception){
