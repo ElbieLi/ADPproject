@@ -48,15 +48,18 @@ public class CustomerAPITests {
 
     @Test
     public void testGetCustomerById(){
+
+        //mock the behavior of repo.findById
         Customer customer = new Customer(1, "Amy", "amy@adp.com", "pw123");
 
         when(repo.findById((long) 1)).thenReturn(Optional.of(customer));
 
+        //call the method under test
         Optional<Customer> result = customerAPI.getCustomerById((long)1);
 
+        //verify the result using assert
         assertEquals(Optional.of(customer), result);
 
     }
-
 
 }
