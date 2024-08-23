@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./gradlew clean bootJar
+# RUN ./gradlew clean bootJar
 
 COPY build/libs/*.jar app.jar
 
@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY --from=builder /app/app.jar app.jar
 
-EXPOSE 8080
+EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]  
